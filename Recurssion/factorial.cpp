@@ -1,23 +1,29 @@
 #include<iostream>
 using namespace std;
-int factorial(int);
+int fibonacci(int);
 int main()
 {
-    int num, fact;
-    cout<<"Enter a number: ";
-    cin>>num;
-    fact = factorial(num);
-    cout<<num<<"! = "<<fact<<endl;
+    int terms;
+    cout<<"Enter number of terms: ";
+    cin>>terms;
+    for(int i = 1; i<=terms; i++)
+    {
+        cout<<fibonacci(i)<<"\t";
+    }
     return 0;
 }  
-int factorial(int a)
+int fibonacci(int n)
 {
-    if(a == 0 || a == 1)
+    if(n == 1)
+    {
+        return 0;
+    }
+    else if (n == 2)
     {
         return 1;
     }
     else
     {
-        return factorial(a-1)*a;
+        return fibonacci(n-1) + fibonacci(n-2);
     }
 }
