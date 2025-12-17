@@ -1,13 +1,13 @@
 #include<iostream>
 #define SIZE 4
 using namespace std;
-class IpResQueue{
+class IpResDeque{
     private:
         int rear;
         int front;
         int arr[SIZE];
     public:
-        IpResQueue(){
+        IpResDeque(){
             front = -1;
             rear = -1;
         }
@@ -25,7 +25,7 @@ class IpResQueue{
                 arr[rear] = data;
             }
         }
-        void popFromFront(){
+        void deleteFromFront(){
             if(front == -1 && rear == -1){
                 cout<<"Queue is empty"<<endl;
             }
@@ -36,10 +36,10 @@ class IpResQueue{
             }
             else{
                 cout<<arr[front]<<" is deleted from the Queue."<<endl;
-                front = (front + 1) % SIZE;
+                front = (front + 1) % SIZE; 
             }
         }
-        void popFromRear(){
+        void deleteFromRear(){
             if(front == -1 && rear == -1){
                 cout<<"Queue is empty"<<endl;
             }
@@ -58,20 +58,27 @@ class IpResQueue{
             }
         }
         void display(){
-
-            cout<<arr[0]<<endl;
-            cout<<"Queue: ";
-            for(int i = 0; i < SIZE; i++){
-                cout<<arr[i]<<"\t";
+            if(front == -1){
+                cout<<"Queue is empty"<<endl;
             }
+            else{
+                cout<<"Queue: ";
+                int i = front;
+                while(true){
+                    cout<<arr[i]<<"\t";
+                    if(i == rear) break;
+                    i = (i + 1) % SIZE;
+            }
+            }
+            cout<<endl;
         }
 };
 int main(){
-    IpResQueue queue;
+    IpResDeque queue;
     int choice, n, value;
     while(1){
-        cout<<"Menu"<<endl;
-        cout<<"1. enqueue\n2. Pop from Front\n3. Pop from Rear\n4. Display\n5. Exit"<<endl;
+        cout<<endl<<"--- Menu ---"<<endl;
+        cout<<"1. Enqueue\n2. Delete from Front\n3. Delete from Rear\n4. Display\n5. Exit"<<endl;
         cout<<"Enter your choice: ";
         cin>>choice;
         switch(choice){
@@ -82,10 +89,10 @@ int main(){
                 cout<<endl;
                 break;
             case 2:
-                queue.popFromFront();
+                queue.deleteFromFront();
                 break;
             case 3:
-                queue.popFromRear();
+                queue.deleteFromRear();
                 break;
             case 4:
                 queue.display();

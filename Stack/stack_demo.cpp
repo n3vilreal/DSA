@@ -45,7 +45,7 @@ int main()
 {   
     Stack s;
     int choice, n, value;
-    while(true)
+    while(1)
     {
         cout<<"Menu"<<endl;
         cout<<"1: Push"<<endl<<"2: Pop"<<endl<<"3: Exit"<<endl;
