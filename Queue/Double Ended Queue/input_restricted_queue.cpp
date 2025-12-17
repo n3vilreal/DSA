@@ -83,10 +83,9 @@ int main(){
         cin>>choice;
         switch(choice){
             case 1:
-                cout<<"Enter value ";
+                cout<<"Enter value: ";
                 cin>>value;
                 queue.enqueue(value);
-                cout<<endl;
                 break;
             case 2:
                 queue.deleteFromFront();
