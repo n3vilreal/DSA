@@ -68,7 +68,7 @@ class IpResDeque{
                     cout<<arr[i]<<"\t";
                     if(i == rear) break;
                     i = (i + 1) % SIZE;
-            }
+                }
             }
             cout<<endl;
         }
@@ -97,6 +97,7 @@ int main(){
                 queue.display();
                 break;
             case 5:
+                cout<<"Program Exited"<<endl;
                 exit(1);
                 break;
             default:

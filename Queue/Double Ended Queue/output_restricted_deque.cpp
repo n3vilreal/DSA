@@ -101,6 +101,7 @@ int main(){
                 queue.display();
                 break;
             case 5:
+                cout<<"Program Exited"<<endl;
                 exit(1);
                 break;
             default:
