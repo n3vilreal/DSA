@@ -43,30 +43,28 @@ public:
         cout<<"Enter the position: ";
         cin>>pos;
         if(pos == 1){
-            if(head == NULL){
-            newnode -> next = NULL;
-            head = newnode;
-            }
-            else{
-                newnode -> next = head;
-                head = newnode;
-            }
+            insertAtBeg(data);
+            return;
         }
         else{
             Node *temp = head;
             int i = 1;
-            while(i < pos-1){
+            while(i < pos-1 && temp != NULL){
                 temp = temp -> next;
                 i++;
+            }
+            if (temp == NULL) {
+                cout << "Invalid position\n";
+                return;
             }
             newnode -> next = temp -> next;
             temp -> next = newnode;
         }
-
     }
     void deleteAtBeg(){
         if(head == NULL){
             cout<<"Linked list is empty."<<endl;
+            return;
         }
         else{
             Node *temp = head;
@@ -78,6 +76,12 @@ public:
     void deleteAtEnd(){
         if(head == NULL){
             cout<<"Linked list is empty."<<endl;
+        }
+        else if(head->next == NULL) {
+            cout<<head->data<<" is deleted."<<endl;
+            delete head;
+            head = NULL;
+            return;
         }
         else{
             Node *temp = head;
@@ -105,11 +109,12 @@ public:
                 head = head -> next;
                 cout<<temp->data<<" is deleted from the list."<<endl;
                 delete temp;
+                return;
             }
         }
         else{
             int i = 1;
-            while(i < pos-1){
+            while(i < pos-1 && temp != NULL){
                 temp = temp -> next;
                 i++;
             }
@@ -119,18 +124,28 @@ public:
         temp -> next = nextnode -> next;
         delete nextnode;
     }
-    void searchElement(){
+    void searchElement(int key){
+        Node *temp = head;
+        while(temp != NULL){
+            if(temp->data == key){
+                cout<<"Search found"<<endl;
+                return;
+            }
+            temp = temp->next;
+        }
 
+        cout<<"Search not found"<<endl;
     }
     void display(){
         if(head == NULL){
             cout<<"List is empty."<<endl;
+            return;
         }
         else{
             Node *temp = head;
             cout<<"Linked list: ";
             while(temp != NULL){
-                cout<<temp->data<<"\t";
+                cout<<temp->data<<" ";
                 temp = temp -> next;
             }
             cout<<endl;
@@ -143,6 +158,7 @@ int main(){
     n.insertAtEnd(10);
     n.insertAtPos(20);
     n.display();
+    n.searchElement(10);
     n.deleteAtBeg();
     n.display();
     n.deleteAtPos();
