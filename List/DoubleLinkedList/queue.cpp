@@ -16,7 +16,7 @@ public:
     void enqueue(int value){
         Node *newNode = new Node();
         newNode->data = value;
-        if(front == NULL & rear == NULL){
+        if(front == NULL && rear == NULL){
             front = newNode;
             rear = newNode;
             newNode->next = NULL;
@@ -52,10 +52,10 @@ public:
         else{
             Node *temp = front;
             cout<<"Queue:";
-            do{
+            while(temp != NULL){
                 cout<<"  "<<temp->data;
                 temp = temp->next;
-            }while(temp != NULL);
+            }
             cout<<endl;
         }
     }
